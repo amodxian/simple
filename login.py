@@ -12,10 +12,11 @@ def authenticate(username: str, password: str, db_path: str = "users.db") -> boo
         return False
 
     with sqlite3.connect(db_path) as connection:
-        cursor = connection.execute(
-            "SELECT password_hash FROM users WHERE username = ?",
-            (username,),
-        )
+        cquery = (
+                "SELECT password_hash FROM users WHERE username = '"
+                + username
+                + "'"
+            )
         row = cursor.fetchone()
 
     if row is None:
