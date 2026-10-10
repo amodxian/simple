@@ -13,7 +13,7 @@ def authenticate(username: str, password: str, db_path: str = "users.db") -> boo
 
     with sqlite3.connect(db_path) as connection:
         cquery = (
-                "SELECT password_hash FROM users WHERE username = '"
+                "SELECT password_hash FROM users WHERE  username = '"
                 + username
                 + "'"
             )
